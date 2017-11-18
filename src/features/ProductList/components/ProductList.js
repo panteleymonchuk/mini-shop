@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { addCartItem } from './../../CartList/actions/cartList';
+
 import ListItem from './ListItem/ListItem';
 
 import './ProductList.css';
 
 class ProductList extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this._handleBtnClick = this._handleBtnClick.bind(this);
+  }
+
+  _handleBtnClick() {
+    const { addCartItem } = this.props;
+    addCartItem({});
+  }
+
   render() {
 
     const { productList } = this.props;
 
-    const products = productList.map((listItem) => <ListItem key={listItem.id} {...listItem}/>);
+    const products = productList.map((listItem) => <ListItem key={listItem.id} {...listItem} handleBtnClick={this._handleBtnClick}/>);
 
     return (
       <div className="productList">
@@ -25,11 +39,18 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  productList: PropTypes.array
+  productList: PropTypes.array,
+
+  //actions
+  addCartItem: PropTypes.func
 };
 
 const mapStateToProps = ({ productList }) => ({
   productList
 });
 
-export default connect(mapStateToProps, null)(ProductList);
+const mapDispatchToProps = {
+  addCartItem
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

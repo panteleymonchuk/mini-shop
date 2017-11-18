@@ -7,7 +7,11 @@ const initialState = [
 
 ];
 
-const carts = (state = initialState) => {
+const carts = (state = initialState, action) => {
+  switch (action.type) {
+    case CART_ITEM_ADD:
+      return Object.assign({}, state, [...state, action.data]);
+  }
   return state;
 };
 
