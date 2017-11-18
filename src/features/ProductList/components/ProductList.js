@@ -8,7 +8,7 @@ class ProductList extends Component {
 
     return (
       <div className="ProductList">
-        Component
+        Componentff
       </div>
     );
   }
