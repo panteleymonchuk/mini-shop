@@ -5,13 +5,21 @@ import listItem from './../../../../images/listItem.png';
 
 import './ListItem.css';
 
-const ListItem = ({ name, price, handleBtnClick }) => {
+const ListItem = ({ id, name, price, handleBtnClick }) => {
+
+  const itemObj = {
+    id: id,
+    name: name,
+    price: price,
+    count: 1
+  };
+
   return (
     <div className="listItem">
       <img className="listItem__img" src={listItem} alt=""/>
       <h4 className="listItem__name">{name}</h4>
       <p className="listItem__price">{price} USD</p>
-      <button className="listItem__addToCart" onClick={() => handleBtnClick()}>Add to cart</button>
+      <button className="listItem__addToCart" onClick={() => handleBtnClick(itemObj)}>Add to cart</button>
     </div>
   );
 };

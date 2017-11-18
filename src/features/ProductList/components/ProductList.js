@@ -16,9 +16,9 @@ class ProductList extends Component {
     this._handleBtnClick = this._handleBtnClick.bind(this);
   }
 
-  _handleBtnClick() {
+  _handleBtnClick(listItem) {
     const { addCartItem } = this.props;
-    addCartItem({});
+    addCartItem(listItem);
   }
 
   render() {

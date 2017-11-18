@@ -5,10 +5,4 @@ import {
   CART_ITEM_COUNT_REMOVE
 } from './../reducers/cartList';
 
-export const addCartItem = (item) => {
-  console.log(item);
-  return {
-    type: CART_ITEM_ADD,
-    data: item
-  };
-};
+export const addCartItem = (item) => ({ type: CART_ITEM_ADD, data: item });
