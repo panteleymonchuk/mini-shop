@@ -1,0 +1,8 @@
+.productList {
+  background: #ededed;
+  padding: 25px;
+  margin: auto;
+  display: table; }
+  .productList__products {
+    display: flex;
+    padding: 10px; }

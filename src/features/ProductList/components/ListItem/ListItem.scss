@@ -1,0 +1,36 @@
+.listItem {
+  background: #fff;
+  padding: 25px;
+  margin: 10px;
+
+  &__img {
+    width: 100px;
+  }
+
+  &__name {
+    color: #1f9eed;
+  }
+
+  &__addToCart {
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    background: none;
+    cursor: pointer;
+    padding: 15px 40px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    background: #cb4e4e;
+    color: #fff;
+    box-shadow: 0 6px #ab3c3c;
+
+    &:hover {
+      box-shadow: 0 4px #ab3c3c;
+      top: 2px;
+    }
+  }
+}
