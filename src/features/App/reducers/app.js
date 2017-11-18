@@ -5,7 +5,7 @@ const initialState = {
   title: 'default title'
 };
 
-const app = (state = initialState, action) => {
+const AppReducers = (state = initialState, action) => {
   switch (action.type) {
     case APP_SET_TITLE:
       return Object.assign({}, state, {
@@ -17,4 +17,4 @@ const app = (state = initialState, action) => {
   }
 };
 
-export default app;
+export default AppReducers;
