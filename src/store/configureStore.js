@@ -2,10 +2,12 @@ import { createStore, combineReducers } from 'redux';
 
 import AppReducer from './../features/App/reducers';
 import ProductList from './../features/ProductList/reducers';
+import CartList from './../features/CartList/reducers';
 
 const rootReducer = {
   ...AppReducer,
-  ...ProductList
+  ...ProductList,
+  ...CartList
 };
 
 const configureStore = (initialState) => createStore(

@@ -1,8 +1,3 @@
-// Set title
-export const PRODUCT_LIST_REQ = 'PRODUCT_LIST_REQ';
-export const PRODUCT_LIST_GOT = 'PRODUCT_LIST_GOT';
-export const PRODUCT_LIST_ERR = 'PRODUCT_LIST_ERR';
-
 const initialState = [
   {
     id: 1,
@@ -16,19 +11,23 @@ const initialState = [
     id: 3,
     name: 'product name 3',
     price: 20
+  }, {
+    id: 4,
+    name: 'product name 3',
+    price: 20
+  }, {
+    id: 5,
+    name: 'product name 3',
+    price: 20
+  }, {
+    id: 6,
+    name: 'product name 3',
+    price: 20
   },
 ];
 
-const AppReducers = (state = initialState, action) => {
-  switch (action.type) {
-    case PRODUCT_LIST_GOT:
-      return Object.assign({}, state, {
-        title: action.title
-      });
-
-    default:
-      return state;
-  }
+const products = (state = initialState) => {
+  return state;
 };
 
-export default AppReducers;
+export default products;
