@@ -7,8 +7,8 @@ import { createStore } from 'redux';
 const configureStore = createStore( () => {}, {});
 
 // const configureStore = (initialState) => {
-  // const store = createStore(AppReducers, initialState);
-  // return store;
+// const store = createStore(AppReducers, initialState);
+// return store;
 // };
 
 export default configureStore;
