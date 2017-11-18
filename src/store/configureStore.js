@@ -1,13 +1,22 @@
 import { createStore } from 'redux';
 
-// reducers import
-import app from './../features/App/reducers/app';
-
-
-// const configureStore = createStore( () => {}, {});
+import rootReducer from './../features/App/reducers/app';
 
 const configureStore = (initialState) => {
-  return createStore(app, initialState);
+  const store = createStore(
+    rootReducer,
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
 };
 
 export default configureStore;
