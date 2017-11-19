@@ -7,8 +7,6 @@ import {
 
 export const addCartItem = (item) => ({ type: CART_ITEM_ADD, data: item });
 
-export const itemCountAdd = (items, itemId) => {
-  ++items[itemId].quantity;
-  // console.log(items);
-  return { type: CART_ITEM_COUNT_ADD, newArray: items };
-};
+export const itemCountAdd = (index) => ({ type: CART_ITEM_COUNT_ADD, index: index });
+
+export const itemCountRemove = (index) => ({ type: CART_ITEM_COUNT_REMOVE, index: index });

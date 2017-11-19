@@ -91,7 +91,7 @@ CartList.propTypes = {
 };
 
 const mapStateToProps = ({ cartList }) => ({
-  cartList: cartList.items
+  cartList: cartList
 });
 
 const mapDispatchToProps = {

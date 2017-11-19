@@ -13,15 +13,15 @@ const initialState = [
     price: 20
   }, {
     id: 4,
-    name: 'product name 3',
+    name: 'product name 4',
     price: 20
   }, {
     id: 5,
-    name: 'product name 3',
+    name: 'product name 5',
     price: 20
   }, {
     id: 6,
-    name: 'product name 3',
+    name: 'product name 6',
     price: 20
   },
 ];

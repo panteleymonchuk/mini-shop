@@ -35,7 +35,7 @@ class ProductList extends Component {
 
     if (!!cartList.length) {
       existPosition = this._isItemExist(listItem);
-      existPosition !== false ? itemCountAdd(cartList, existPosition) : addCartItem(listItem);
+      existPosition !== false ? itemCountAdd(existPosition) : addCartItem(listItem);
     } else {
       addCartItem(listItem);
     }
@@ -70,7 +70,7 @@ ProductList.propTypes = {
 
 const mapStateToProps = ({ productList, cartList }) => ({
   productList,
-  cartList: cartList.items
+  cartList: cartList
 
 });
 
