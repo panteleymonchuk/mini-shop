@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { addCartItem } from './../../CartList/actions/cartList';
+import { addCartItem, itemCountAdd } from './../../CartList/actions/cartList';
 
 import ListItem from './ListItem/ListItem';
 
@@ -22,7 +22,7 @@ class ProductList extends Component {
 
     for (let i = 0; i < cartList.length; i++) {
       if (listItem.id === cartList[i].id) {
-        return true;
+        return i;
       }
     }
 
@@ -30,11 +30,16 @@ class ProductList extends Component {
   }
 
   _handleBtnClick(listItem) {
-    const { addCartItem, cartList } = this.props;
+    const { addCartItem, cartList, itemCountAdd } = this.props;
+    let existPosition = false;
 
-    console.log(this._isItemExist(listItem));
+    if (!!cartList.length) {
+      existPosition = this._isItemExist(listItem);
+      existPosition !== false ? itemCountAdd(cartList, existPosition) : addCartItem(listItem);
+    } else {
+      addCartItem(listItem);
+    }
 
-    addCartItem(listItem);
     // !cartList.length && addCartItem(listItem);
   }
 
@@ -59,7 +64,8 @@ ProductList.propTypes = {
   productList: PropTypes.array,
 
   //actions
-  addCartItem: PropTypes.func
+  addCartItem: PropTypes.func,
+  itemCountAdd: PropTypes.func,
 };
 
 const mapStateToProps = ({ productList, cartList }) => ({
@@ -69,7 +75,8 @@ const mapStateToProps = ({ productList, cartList }) => ({
 });
 
 const mapDispatchToProps = {
-  addCartItem
+  addCartItem,
+  itemCountAdd,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

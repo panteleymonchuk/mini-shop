@@ -14,6 +14,16 @@ const carts = (state = initialState, action) => {
         items: [...state.items, action.data]
       });
 
+
+    case CART_ITEM_COUNT_ADD:
+
+
+      // const newState = ++state.items[action.itemId].quantity;
+
+      return Object.assign({}, state, {
+        items: action.newArray
+      });
+
     default:
       return state;
   }

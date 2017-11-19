@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { itemCountAdd } from './../actions/cartList';
+
 // import ListItem from './ListItem/ListItem';
 
 import './CartList.css';
@@ -22,24 +24,27 @@ class CartList extends Component {
   _getCartList = () => {
 
     const { cartList } = this.props;
-
-    return !!cartList.length && cartList.map((item) => (
-      <tr key={item.id}>
-        <td>{item.name}</td>
-        <td>{item.price}</td>
-        <td>
-          <button className="CartList__btn">-</button>
-          {item.quantity}
-          <button className="CartList__btn">+</button>
-        </td>
-        <td>
-          {item.price * item.quantity} USD
-        </td>
-        <td>
-          <button className="CartList__btn">remove</button>
-        </td>
-      </tr>
-    ));
+    console.log(cartList);
+    return !!cartList.length && cartList.map((item) => {
+      // console.log(item);
+      return (
+        <tr key={item.id}>
+          <td>{item.name}</td>
+          <td>{item.price}</td>
+          <td>
+            <button className="CartList__btn">-</button>
+            {item.quantity}
+            <button className="CartList__btn">+</button>
+          </td>
+          <td>
+            {item.price * item.quantity} USD
+          </td>
+          <td>
+            <button className="CartList__btn">remove</button>
+          </td>
+        </tr>
+      );
+    });
   };
 
   render() {
@@ -89,4 +94,8 @@ const mapStateToProps = ({ cartList }) => ({
   cartList: cartList.items
 });
 
-export default connect(mapStateToProps, null)(CartList);
+const mapDispatchToProps = {
+  itemCountAdd,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartList);
