@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { itemCountAdd } from './../actions/cartList';
+import { itemCountAdd, itemCountRemove, removeCartItem } from './../actions/cartList';
 
-// import ListItem from './ListItem/ListItem';
 
 import './CartList.css';
 
@@ -15,7 +14,7 @@ class CartList extends Component {
     let total = 0;
 
     !!cartList.length && cartList.map((item) => {
-      total += item.price;
+      total += item.price * item.quantity;
     });
 
     return total;
@@ -23,24 +22,22 @@ class CartList extends Component {
 
   _getCartList = () => {
 
-    const { cartList } = this.props;
-    console.log(cartList);
-    return !!cartList.length && cartList.map((item) => {
-      // console.log(item);
+    const { cartList, itemCountAdd, itemCountRemove, removeCartItem } = this.props;
+    return !!cartList.length && cartList.map((item, index) => {
       return (
         <tr key={item.id}>
           <td>{item.name}</td>
           <td>{item.price}</td>
           <td>
-            <button className="CartList__btn">-</button>
+            <button className="CartList__btn" onClick={() => itemCountRemove(index)}>-</button>
             {item.quantity}
-            <button className="CartList__btn">+</button>
+            <button className="CartList__btn" onClick={() => itemCountAdd(index)}>+</button>
           </td>
           <td>
             {item.price * item.quantity} USD
           </td>
           <td>
-            <button className="CartList__btn">remove</button>
+            <button className="CartList__btn" onClick={() => removeCartItem(index)}>remove</button>
           </td>
         </tr>
       );
@@ -87,7 +84,12 @@ class CartList extends Component {
 }
 
 CartList.propTypes = {
-  cartList: PropTypes.array
+  cartList: PropTypes.array,
+
+  // actions
+  itemCountAdd: PropTypes.func,
+  itemCountRemove: PropTypes.func,
+  removeCartItem: PropTypes.func,
 };
 
 const mapStateToProps = ({ cartList }) => ({
@@ -96,6 +98,8 @@ const mapStateToProps = ({ cartList }) => ({
 
 const mapDispatchToProps = {
   itemCountAdd,
+  itemCountRemove,
+  removeCartItem,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);
