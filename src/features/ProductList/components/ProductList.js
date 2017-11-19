@@ -14,12 +14,28 @@ class ProductList extends Component {
     super(props);
 
     this._handleBtnClick = this._handleBtnClick.bind(this);
+    this._isItemExist = this._isItemExist.bind(this);
+  }
+
+  _isItemExist(listItem) {
+    const { cartList } = this.props;
+
+    for (let i = 0; i < cartList.length; i++) {
+      if (listItem.id === cartList[i].id) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   _handleBtnClick(listItem) {
     const { addCartItem, cartList } = this.props;
 
+    console.log(this._isItemExist(listItem));
+
     addCartItem(listItem);
+    // !cartList.length && addCartItem(listItem);
   }
 
   render() {
