@@ -10,12 +10,14 @@ const initialState = {
 const carts = (state = initialState, action) => {
   switch (action.type) {
     case CART_ITEM_ADD:
-      console.log(state);
       return Object.assign({}, state, {
         items: [...state.items, action.data]
       });
+
+    default:
+      return state;
   }
-  return state;
+
 };
 
 export default carts;

@@ -17,7 +17,8 @@ class ProductList extends Component {
   }
 
   _handleBtnClick(listItem) {
-    const { addCartItem } = this.props;
+    const { addCartItem, cartList } = this.props;
+
     addCartItem(listItem);
   }
 
@@ -45,8 +46,10 @@ ProductList.propTypes = {
   addCartItem: PropTypes.func
 };
 
-const mapStateToProps = ({ productList }) => ({
-  productList
+const mapStateToProps = ({ productList, cartList }) => ({
+  productList,
+  cartList: cartList.items
+
 });
 
 const mapDispatchToProps = {

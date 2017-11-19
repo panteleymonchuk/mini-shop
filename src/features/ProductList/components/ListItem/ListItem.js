@@ -11,7 +11,7 @@ const ListItem = ({ id, name, price, handleBtnClick }) => {
     id: id,
     name: name,
     price: price,
-    count: 1
+    quantity: 1
   };
 
   return (
