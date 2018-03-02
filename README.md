@@ -1,3 +1,5 @@
+repository: github
+
 Mini SPA for shop.
 Features architecture
 
